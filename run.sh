@@ -1,0 +1,1 @@
+./compile.sh && ./sfml-app

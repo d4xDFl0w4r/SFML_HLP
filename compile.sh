@@ -1,0 +1,1 @@
+g++ -c main.cpp Function/function.cpp && g++ main.o function.o -o sfml-app -lsfml-graphics -lsfml-window -lsfml-system
