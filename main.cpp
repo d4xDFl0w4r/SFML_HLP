@@ -1,6 +1,5 @@
 #include <SFML/Graphics.hpp>
 
-#include <iostream>
 #include <cmath>
 
 #include "Function/function.hpp"
@@ -25,6 +24,7 @@ const float SCALE_MIN = 1;
 const float DXY = 25;
 
 size_t scale = 50;
+size_t speed = 10;
 
 const float I = 0;
 size_t t = 0;
@@ -65,6 +65,9 @@ void InvertColor(Color& color);
 int main(int argc, char** argv) {
     srand(time(nullptr));
 
+    Clock* clock = new Clock;
+    double deltaTime = 0;
+
     if (argc == 3) {
         GRAPHIC_WINDOW_WIDTH = atoi(argv[1]);
         GRAPHIC_WINDOW_HEIGHT = atoi(argv[2]);
@@ -73,11 +76,13 @@ int main(int argc, char** argv) {
     RenderWindow graphicWindow(VideoMode(GRAPHIC_WINDOW_WIDTH, GRAPHIC_WINDOW_HEIGHT, 32), "Prosto sinusoida");
 
     while (graphicWindow.isOpen()) {
+        deltaTime = clock->restart().asSeconds();
         Event event;
         while (graphicWindow.pollEvent(event)) {
             EventHandler(event, graphicWindow);
         }
 
+        std::this_thread::sleep_for(std::chrono::milliseconds(1));
 
         graphicWindow.clear(colorBackground);
 
@@ -148,12 +153,10 @@ void EventHandler(Event& event, RenderWindow& window) {
             scale++;
             ox -= ox / scale;
             oy -= oy / scale;
-            std::cout << "Scale: " << scale << std::endl;
         } else if (event.key.code == Keyboard::Hyphen && scale > SCALE_MIN) { // '-' ('_')
             scale--;
             ox += ox / scale;
             oy += oy / scale;
-            std::cout << "Scale: " << scale << std::endl;
 
 
         } else if (event.key.code == Keyboard::L) {

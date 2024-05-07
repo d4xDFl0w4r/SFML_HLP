@@ -1,1 +1,1 @@
-g++ -c main.cpp Function/function.cpp && g++ main.o function.o -o sfml-app -lsfml-graphics -lsfml-window -lsfml-system
+g++ -c main.cpp Function/function.cpp -IC:\SFML-2.6.1\include -DSFML_STATIC && g++ main.o function.o -o sinwave -LC:\SFML-2.6.1\lib -lsfml-graphics-s -lsfml-window-s -lsfml-system-s -lopengl32 -lwinmm -lgdi32
