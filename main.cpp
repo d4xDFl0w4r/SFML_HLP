@@ -15,10 +15,10 @@ Color colorAxis = Color(128, 128, 128);
 Color colorGrid = Color(32, 32, 32);
 Color colorArea = Color(165, 165, 165);
 
-int GRAPHIC_WINDOW_WIDTH = 800;
-int GRAPHIC_WINDOW_HEIGHT = 800;
+int GRAPHIC_WINDOW_WIDTH = 500;
+int GRAPHIC_WINDOW_HEIGHT = 600;
 
-const float SCALE_MAX = 200;
+const float SCALE_MAX = 100;
 const float SCALE_MIN = 1;
 
 const float DXY = 25;
